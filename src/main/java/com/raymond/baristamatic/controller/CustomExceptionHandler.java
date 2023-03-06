@@ -15,7 +15,7 @@ import java.util.Map;
 public class CustomExceptionHandler {
     @ExceptionHandler(DrinkNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String,String> handleDrinkNotFound(DrinkNotFoundException e) {
+    public Map<String,String> handleDrinkNotFound() {
         Map<String,String> response = new HashMap<>();
         response.put("message","Drink not found. Please see /menu");
         return response;

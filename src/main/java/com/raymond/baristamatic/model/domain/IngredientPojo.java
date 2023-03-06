@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 public class IngredientPojo {
-    private String name;
-    private int amount;
+    private final String name;
+    private final int amount;
     public IngredientPojo(Ingredient ingredient) {
         name = ingredient.getName();
         amount = ingredient.getAmount();

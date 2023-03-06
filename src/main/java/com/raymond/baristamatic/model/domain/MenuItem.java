@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 
 @Getter
 public class MenuItem {
-    private long id;
-    private String name;
+    private final long id;
+    private final String name;
     @JsonProperty("price")
     private int centCost;
     private int amountAvailable;

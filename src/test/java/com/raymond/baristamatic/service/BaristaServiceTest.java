@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest //Starting application and hitting database for real. I know it's not really a unit test, but it's too time consuming to build mocks.
+@SpringBootTest //Starting application and hitting database for real. I know it's not really a unit test, but it's too time-consuming to build mocks.
 public class BaristaServiceTest {
     @Autowired
     BaristaService baristaService;
@@ -45,18 +45,22 @@ public class BaristaServiceTest {
         List<IngredientPojo> list = baristaService.checkInventory();
 
         for (IngredientPojo ip : list) {
-            if (ip.getName().equals("Coffee")) assertEquals(7,ip.getAmount());
-            else if (ip.getName().equals("Sugar")) assertEquals(9,ip.getAmount());
-            else if (ip.getName().equals("Cream")) assertEquals(9,ip.getAmount());
+            switch (ip.getName()) {
+                case "Coffee":
+                    assertEquals(7, ip.getAmount());
+                    break;
+                case "Sugar":
+                case "Cream":
+                    assertEquals(9, ip.getAmount());
+                    break;
+            }
         }
     }
 
     @Test
     @Sql(statements = "update ingredient set amount = 0")
     public void orderDrink_throws_exception_when_insufficient_ingredients() {
-        InsufficientIngredientException e = assertThrows(InsufficientIngredientException.class, () -> {
-            baristaService.orderDrink("Coffee");
-        });
+        InsufficientIngredientException e = assertThrows(InsufficientIngredientException.class, () -> baristaService.orderDrink("Coffee"));
 
         assertTrue(e.getMessage().contains("Coffee"));
         assertTrue(e.getMessage().contains("Cream"));
@@ -66,8 +70,6 @@ public class BaristaServiceTest {
     @Test
     @Sql(statements = "update ingredient set amount = 10")
     public void orderDrink_throws_exception_when_invalid_drink() {
-        DrinkNotFoundException e = assertThrows(DrinkNotFoundException.class, () -> {
-            baristaService.orderDrink("Sprite");
-        });
+        assertThrows(DrinkNotFoundException.class, () -> baristaService.orderDrink("Sprite"));
     }
 }

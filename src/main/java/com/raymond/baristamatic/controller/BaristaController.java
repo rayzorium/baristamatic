@@ -45,8 +45,7 @@ public class BaristaController {
     }
 
     @PostMapping("/orderDrink")
-    public Map<String,String> orderDrink(@RequestParam(required = true) String drink) throws DrinkNotFoundException, InsufficientIngredientException {
-        System.out.println(drink);
+    public Map<String,String> orderDrink(@RequestParam String drink) throws DrinkNotFoundException, InsufficientIngredientException {
         orderDrink.orderDrink(drink);
 
         Map<String,String> response = new HashMap<>();
