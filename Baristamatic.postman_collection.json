@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "202e3434-d288-44db-a90a-38c460dd0ca5",
+		"name": "Baristamatic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7005072"
+	},
+	"item": [
+		{
+			"name": "orderDrink",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orderDrink?drink=Coffee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orderDrink"
+					],
+					"query": [
+						{
+							"key": "drink",
+							"value": "Coffee"
+						}
+					]
+				},
+				"description": "RequestParam \"drink\" required. Allowed values:\n\nCoffee\n\nDecaf Coffee\n\nCaffe Latte\n\nCaffe Americano\n\nCaffe Mocha\n\nCappuccino"
+			},
+			"response": [
+				{
+					"name": "Successful Coffee request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/orderDrink?drink=Coffee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orderDrink"
+							],
+							"query": [
+								{
+									"key": "drink",
+									"value": "Coffee"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Mar 2023 22:46:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Enjoy your Coffee!\"\n}"
+				},
+				{
+					"name": "Insufficient ingredients for Caffe Mocha",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/orderDrink?drink=Caffe Mocha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orderDrink"
+							],
+							"query": [
+								{
+									"key": "drink",
+									"value": "Caffe Mocha"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Mar 2023 22:51:24 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Insufficient ingredients: Espresso, Cocoa, Steamed Milk, Whipped Cream. Please /restock\"\n}"
+				},
+				{
+					"name": "Drink not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/orderDrink?drink=Sprite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orderDrink"
+							],
+							"query": [
+								{
+									"key": "drink",
+									"value": "Sprite"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Mar 2023 22:52:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Drink not found. Please see /menu\"\n}"
+				}
+			]
+		},
+		{
+			"name": "restock",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/restock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restock"
+					]
+				},
+				"description": "Refills all ingredients to default max value, currently 10 as of this writing."
+			},
+			"response": [
+				{
+					"name": "restock",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restock"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Mar 2023 22:47:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Restock complete!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "checkStock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/checkStock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkStock"
+					]
+				},
+				"description": "Displays total amounts of every ingredient in inventory."
+			},
+			"response": [
+				{
+					"name": "checkStock",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/checkStock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"checkStock"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Mar 2023 22:47:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"name\": \"Coffee\",\n        \"amount\": 4\n    },\n    {\n        \"name\": \"Decaf Coffee\",\n        \"amount\": 4\n    },\n    {\n        \"name\": \"Sugar\",\n        \"amount\": 6\n    },\n    {\n        \"name\": \"Cream\",\n        \"amount\": 6\n    },\n    {\n        \"name\": \"Steamed Milk\",\n        \"amount\": 6\n    },\n    {\n        \"name\": \"Foamed Milk\",\n        \"amount\": 9\n    },\n    {\n        \"name\": \"Espresso\",\n        \"amount\": 2\n    },\n    {\n        \"name\": \"Cocoa\",\n        \"amount\": 10\n    },\n    {\n        \"name\": \"Whipped Cream\",\n        \"amount\": 10\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "menu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/menu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu"
+					]
+				},
+				"description": "Shows every drink available for purchase and how many of each can be made with the ingredients on hand."
+			},
+			"response": [
+				{
+					"name": "menu",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Mar 2023 22:48:03 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Coffee\",\n        \"amountAvailable\": 3,\n        \"price\": \"$2.75\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Decaf Coffee\",\n        \"amountAvailable\": 3,\n        \"price\": \"$2.75\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Caffe Latte\",\n        \"amountAvailable\": 5,\n        \"price\": \"$2.55\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Caffe Americano\",\n        \"amountAvailable\": 3,\n        \"price\": \"$3.30\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Caffe Mocha\",\n        \"amountAvailable\": 10,\n        \"price\": \"$3.35\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Cappuccino\",\n        \"amountAvailable\": 5,\n        \"price\": \"$2.90\"\n    }\n]"
+				}
+			]
+		}
+	]
+}
